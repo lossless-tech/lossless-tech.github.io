@@ -450,7 +450,7 @@ h3:hover .vhs {
 /* Keyframes for the flashing effect */
 @keyframes flashThreeTimes {
   0% {
-    background-color: black; /* Initial color */
+    background-color: rgb(255, 0, 0); /* Initial color */
   }
   20% {
     background-color: rgb(255, 255, 255); /* Flash to color 1 */
