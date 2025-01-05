@@ -118,19 +118,19 @@ function animateText_vhs(target, startDelay = 0) {
 window.onload = function () {
     const h1Elements = document.querySelectorAll("h1");
     h1Elements.forEach((h1) => {
-        animateText_vhs(h1, 250);
+        animateText_vhs(h1, 2250);
         restartAnimationOnHover(h1);  // Add hover effect to h1s
     });
 
     const h2Elements = document.querySelectorAll("h2");
     h2Elements.forEach((h2) => {
-        animateText_vhs(h2, 500);
+        animateText_vhs(h2, 2500);
         restartAnimationOnHover(h2);  // Add hover effect to h2s
     });
 
     const h3Elements = document.querySelectorAll("h3");
     h3Elements.forEach((h3) => {
-        animateText_vhs(h3, 1000);
+        animateText_vhs(h3, 2500);
         restartAnimationOnHover(h3);  // Add hover effect to h3s
     });
 };

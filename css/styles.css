@@ -1,25 +1,73 @@
-  body {
-    background-image: url('../images/hackedit.jpg');  /* Specify the image path */
-    background-size: cover;  /* Makes sure the image fits without stretching */
-    background-position: center;  /* Centers the image within the body */
-    background-repeat: no-repeat;  /* Prevents the image from repeating */
-    background-attachment: fixed;  /* Fixes the background image in place when scrolling */
+@keyframes backgroundFlicker {
+    0% { opacity: 0; }
+    10% { opacity: 0.0; }
+    15% { opacity: 0.0; }
+    25% { opacity: 0.0; }
+    30% { opacity: 0.0; }
+    40% { opacity: 0.4; }
+    42% { opacity: 0.0; }
+    44% { opacity: 0.8; }
+    46% { opacity: 0.1; }
+    48% { opacity: 0.5; }
+    50% { opacity: 0.0; }
+    52% { opacity: 0.6; }
+    54% { opacity: 0.2; }
+    56% { opacity: 0.6; }
+    58% { opacity: 0.2; }
+    60% { opacity: 0.6; }
+    65% { opacity: 0.1; }
+    70% { opacity: 0.6; }
+    75% { opacity: 0.2; }
+    80% { opacity: 0.5; }
+    85% { opacity: 0.3; }
+    90% { opacity: 0.6; }
+    95% { opacity: 0.1; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.content-wrapper {
+    opacity: 0;
+    animation: fadeInContent 0.5s ease-out forwards;
+    animation-delay: 1.5s;  /* Start after background flicker */
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/hackedit.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0;  /* Start completely black */
+    animation: backgroundFlicker 1.5s ease-in-out forwards;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
     font-family: 'Source Code Pro', monospace;
     height: 100vh;
-    background-color: rgb(255, 255, 255);
     color: white;
     margin: 0;
     padding: 1rem 0rem 1rem;
     overflow: hidden;
-  }
+}
 
-  a {
+a {
     text-decoration: none;
-  }
+}
 
 
-  /* General link styling for all h1, h2, and h3 */
-  h1 a, h2 a, h3 a {
+/* General link styling for all h1, h2, and h3 */
+h1 a, h2 a, h3 a {
     color: inherit;         /* Keep the original text color */
     text-decoration: none;  /* Remove the underline from links */
     display: inline-block;  /* Ensure the link only takes up the space of the text */
@@ -27,13 +75,13 @@
     cursor: default;
 }
 
-  h1:hover {
+h1:hover {
     cursor: default;
     text-shadow: inherit;
-  }
+}
 
-  /* Add ">" when hovering over h2 and h3*/
- h2:hover::before, h3:hover::before {
+/* Add ">" when hovering over h2 and h3*/
+h2:hover::before, h3:hover::before {
     content: ">";          /* The character to insert */
     letter-spacing: clamp(1rem, 1vw, 1rem);
     height: 2.0em;
@@ -43,26 +91,26 @@
       flashThreeTimes 0.25s forwards;
 }
 
-  
-  h1 a:visited, h2 a:visited, h3 a:visited {
+
+h1 a:visited, h2 a:visited, h3 a:visited {
     color: inherit;
     text-decoration: none;                 /* Ensure visited links have the same color */
-  }
+}
 
-  h1 a:active, h2 a:active, h3 a:active {
+h1 a:active, h2 a:active, h3 a:active {
     color: inherit;
     text-decoration: none;                 /* No color change when the link is active/clicked */
-  }
+}
     
-  h1, h2, h3 {
+h1, h2, h3 {
     font-family: 'Source Code Pro', monospace;
     background-color: black;
     margin: 0;             /* Remove any default margins */
     padding: 0;            /* Remove any default padding */
     line-height: 1.1;      /* Adjust line-height to reduce vertical space */
-  }
+}
   
-  h1 {
+h1 {
     color: white;
     font-size: clamp(3rem, 10vw, 10rem);
     text-align: center;
@@ -72,9 +120,9 @@
     padding: 0.5rem 2.0rem;
     width: 100%;
     max-width: 100vw;
-  }
+}
 
-  h2 {
+h2 {
     color:rgb(255, 255, 255);
     font-size: clamp(1rem, 5vw, 5rem);
     width: 100%;
@@ -83,9 +131,9 @@
     text-indent: 1rem;
     letter-spacing: clamp(0.5rem, 1vw, 2rem);
     padding: 0.5rem 2.0rem;
-  }
+}
 
-  h3 {
+h3 {
     color: rgb(255, 255, 255);
     font-size: clamp(0.25rem, 2.0vw, 1.5rem);
     width: 100%;
@@ -94,23 +142,22 @@
     margin-bottom: 1.0rem;
     text-indent: 1rem;
     letter-spacing: clamp(0.25rem, 1vw, 1rem);
-  }
+}
 
-  .match {
+.match {
     background-color: white;
     color: rgb(255, 80, 80);
     height: 10rem;
     text-align: center;
- 
-  }
+}
 
-  .viewport-image {
+.viewport-image {
     height: auto;  /* Keep aspect ratio */
     border-radius: 5px;  /* Adjust this value for rounded corners */
     object-fit: cover;  /* Ensures image is cropped appropriately */
-  }
+}
 
-  .viewport-image:hover {
+.viewport-image:hover {
     cursor: pointer;
     animation: 
     flashThreeTimes 0.25s forwards;
@@ -118,63 +165,63 @@
 
 /* Base styling for the link class */
 .link {
-  text-decoration: none;
-  color: inherit; /* Inherit color from parent */ 
-  position: right;
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */ 
+    position: right;
 }
 
 .link img {
-  width: 4vw;
-  height: auto;
-  border-radius: 5px;
-  object-fit: cover;
-  padding: 5px;
-  transition: background-color 0.3s ease;
+    width: 4vw;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+    padding: 5px;
+    transition: background-color 0.3s ease;
 }
 
 
 .link:hover {
-  color: red; /* Change color when hovered */
-  cursor: pointer; /* Optional: gives a pointer on hover */
+    color: red; /* Change color when hovered */
+    cursor: pointer; /* Optional: gives a pointer on hover */
 }
 
 @keyframes reveal {
-  0% {
-      visibility: visible;
-      clip-path: var(--clip-start);
-  }
-  100% {
-      visibility: visible;
-      clip-path: var(--clip-end);
-  }
+    0% {
+        visibility: visible;
+        clip-path: var(--clip-start);
+    }
+    100% {
+        visibility: visible;
+        clip-path: var(--clip-end);
+    }
 }
 
 @keyframes blink {
-  0%, 49% {
-      opacity: 1;
-  }
-  50%, 100% {
-      opacity: 0;
-  }
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
 }
 
 @keyframes linkblink {
-  50%, 84% {
-      opacity: 1;
-  }
-  85%, 100% {
-      opacity: 0;
-  }
+    50%, 84% {
+        opacity: 1;
+    }
+    85%, 100% {
+        opacity: 0;
+    }
 }
 
 /* START VHS */
 .vhs {
-  display: inline-block;
-  color: inherit;
-  position: relative;
-  opacity: 0;  /* Start completely invisible */
-  animation: vhsEffect 1.0s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  will-change: transform, opacity, filter;
+    display: inline-block;
+    color: inherit;
+    position: relative;
+    opacity: 0;  /* Start completely invisible */
+    animation: vhsEffect 1.0s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform, opacity, filter;
 }
 
 h1:hover .vhs,
@@ -191,111 +238,111 @@ h3:hover .vhs {
 
 
 @keyframes vhsEffect {
-  0% {
-      opacity: 0;
-      text-shadow: 64px 0 #ff0000, -64px 0 #00ffff;
-      filter: blur(32px);
-  }
-  5% {
-      opacity: 0.05;
-      text-shadow: 60.8px 0 #ff0000, -60.8px 0 #00ffff;
-      filter: blur(30.4px);
-  }
-  10% {
-      opacity: 0.1;
-      text-shadow: 57.6px 0 #ff0000, -57.6px 0 #00ffff;
-      filter: blur(28.8px);
-  }
-  15% {
-      opacity: 0.15;
-      text-shadow: 54.4px 0 #ff0000, -54.4px 0 #00ffff;
-      filter: blur(27.2px);
-  }
-  20% {
-      opacity: 0.2;
-      text-shadow: 51.2px 0 #ff0000, -51.2px 0 #00ffff;
-      filter: blur(25.6px);
-  }
-  25% {
-      opacity: 0.25;
-      text-shadow: 48px 0 #ff0000, -48px 0 #00ffff;
-      filter: blur(24px);
-  }
-  30% {
-      opacity: 0.3;
-      text-shadow: 44.8px 0 #ff0000, -44.8px 0 #00ffff;
-      filter: blur(22.4px);
-  }
-  35% {
-      opacity: 0.35;
-      text-shadow: 41.6px 0 #ff0000, -41.6px 0 #00ffff;
-      filter: blur(20.8px);
-  }
-  40% {
-      opacity: 0.4;
-      text-shadow: 38.4px 0 #ff0000, -38.4px 0 #00ffff;
-      filter: blur(19.2px);
-  }
-  45% {
-      opacity: 0.45;
-      text-shadow: 35.2px 0 #ff0000, -35.2px 0 #00ffff;
-      filter: blur(17.6px);
-  }
-  50% {
-      opacity: 0.5;
-      text-shadow: 32px 0 #ff0000, -32px 0 #00ffff;
-      filter: blur(16px);
-  }
-  55% {
-      opacity: 0.55;
-      text-shadow: 28.8px 0 #ff0000, -28.8px 0 #00ffff;
-      filter: blur(14.4px);
-  }
-  60% {
-      opacity: 0.6;
-      text-shadow: 25.6px 0 #ff0000, -25.6px 0 #00ffff;
-      filter: blur(12.8px);
-  }
-  65% {
-      opacity: 0.65;
-      text-shadow: 22.4px 0 #ff0000, -22.4px 0 #00ffff;
-      filter: blur(11.2px);
-  }
-  70% {
-      opacity: 0.7;
-      text-shadow: 19.2px 0 #ff0000, -19.2px 0 #00ffff;
-      filter: blur(9.6px);
-  }
-  75% {
-      opacity: 0.75;
-      text-shadow: 16px 0 #ff0000, -16px 0 #00ffff;
-      filter: blur(8px);
-  }
-  80% {
-      opacity: 0.8;
-      text-shadow: 12.8px 0 #ff0000, -12.8px 0 #00ffff;
-      filter: blur(6.4px);
-  }
-  85% {
-      opacity: 0.85;
-      text-shadow: 9.6px 0 #ff0000, -9.6px 0 #00ffff;
-      filter: blur(4.8px);
-  }
-  90% {
-      opacity: 0.9;
-      text-shadow: 6.4px 0 #ff0000, -6.4px 0 #00ffff;
-      filter: blur(3.2px);
-  }
-  95% {
-      opacity: 0.95;
-      text-shadow: 3.2px 0 #ff0000, -3.2px 0 #00ffff;
-      filter: blur(1.6px);
-  }
-  100% {
-      opacity: 1;
-      text-shadow: 0px 0 #ff0000, -0px 0 #00ffff;
-      filter: blur(0px);
-  }
+    0% {
+        opacity: 0;
+        text-shadow: 64px 0 #ff0000, -64px 0 #00ffff;
+        filter: blur(32px);
+    }
+    5% {
+        opacity: 0.05;
+        text-shadow: 60.8px 0 #ff0000, -60.8px 0 #00ffff;
+        filter: blur(30.4px);
+    }
+    10% {
+        opacity: 0.1;
+        text-shadow: 57.6px 0 #ff0000, -57.6px 0 #00ffff;
+        filter: blur(28.8px);
+    }
+    15% {
+        opacity: 0.15;
+        text-shadow: 54.4px 0 #ff0000, -54.4px 0 #00ffff;
+        filter: blur(27.2px);
+    }
+    20% {
+        opacity: 0.2;
+        text-shadow: 51.2px 0 #ff0000, -51.2px 0 #00ffff;
+        filter: blur(25.6px);
+    }
+    25% {
+        opacity: 0.25;
+        text-shadow: 48px 0 #ff0000, -48px 0 #00ffff;
+        filter: blur(24px);
+    }
+    30% {
+        opacity: 0.3;
+        text-shadow: 44.8px 0 #ff0000, -44.8px 0 #00ffff;
+        filter: blur(22.4px);
+    }
+    35% {
+        opacity: 0.35;
+        text-shadow: 41.6px 0 #ff0000, -41.6px 0 #00ffff;
+        filter: blur(20.8px);
+    }
+    40% {
+        opacity: 0.4;
+        text-shadow: 38.4px 0 #ff0000, -38.4px 0 #00ffff;
+        filter: blur(19.2px);
+    }
+    45% {
+        opacity: 0.45;
+        text-shadow: 35.2px 0 #ff0000, -35.2px 0 #00ffff;
+        filter: blur(17.6px);
+    }
+    50% {
+        opacity: 0.5;
+        text-shadow: 32px 0 #ff0000, -32px 0 #00ffff;
+        filter: blur(16px);
+    }
+    55% {
+        opacity: 0.55;
+        text-shadow: 28.8px 0 #ff0000, -28.8px 0 #00ffff;
+        filter: blur(14.4px);
+    }
+    60% {
+        opacity: 0.6;
+        text-shadow: 25.6px 0 #ff0000, -25.6px 0 #00ffff;
+        filter: blur(12.8px);
+    }
+    65% {
+        opacity: 0.65;
+        text-shadow: 22.4px 0 #ff0000, -22.4px 0 #00ffff;
+        filter: blur(11.2px);
+    }
+    70% {
+        opacity: 0.7;
+        text-shadow: 19.2px 0 #ff0000, -19.2px 0 #00ffff;
+        filter: blur(9.6px);
+    }
+    75% {
+        opacity: 0.75;
+        text-shadow: 16px 0 #ff0000, -16px 0 #00ffff;
+        filter: blur(8px);
+    }
+    80% {
+        opacity: 0.8;
+        text-shadow: 12.8px 0 #ff0000, -12.8px 0 #00ffff;
+        filter: blur(6.4px);
+    }
+    85% {
+        opacity: 0.85;
+        text-shadow: 9.6px 0 #ff0000, -9.6px 0 #00ffff;
+        filter: blur(4.8px);
+    }
+    90% {
+        opacity: 0.9;
+        text-shadow: 6.4px 0 #ff0000, -6.4px 0 #00ffff;
+        filter: blur(3.2px);
+    }
+    95% {
+        opacity: 0.95;
+        text-shadow: 3.2px 0 #ff0000, -3.2px 0 #00ffff;
+        filter: blur(1.6px);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 0px 0 #ff0000, -0px 0 #00ffff;
+        filter: blur(0px);
+    }
 }
 
 /* END VHS */
@@ -414,123 +461,123 @@ h3:hover .vhs {
 /* END Glitch */
 
 .letter[style*="--direction"] {
-  --clip-start: inset(0 0 0 0); /* This will be overridden by individual directions */
-  --clip-end: inset(0 0 0 0);
-  animation: 
-      reveal 2s cubic-bezier(0, 0, 1, 3) forwards,
-      blink 50ms step-end infinite;
-  animation-duration: 3s, 50ms;
-  animation-delay: var(--delay), var(--delay);
-  animation-fill-mode: forwards, none;
-  animation-iteration-count: 1, 20;
+    --clip-start: inset(0 0 0 0); /* This will be overridden by individual directions */
+    --clip-end: inset(0 0 0 0);
+    animation: 
+        reveal 2s cubic-bezier(0, 0, 1, 3) forwards,
+        blink 50ms step-end infinite;
+    animation-duration: 3s, 50ms;
+    animation-delay: var(--delay), var(--delay);
+    animation-fill-mode: forwards, none;
+    animation-iteration-count: 1, 20;
 }
 
 /* Direction styles remain the same */
 .letter[style*="--direction: top"] {
-  --clip-start: inset(100% 0 0 0);
-  --clip-end: inset(0 0 0 0);
+    --clip-start: inset(100% 0 0 0);
+    --clip-end: inset(0 0 0 0);
 }
 
 /* Repeat the animation properties for other directions */
 .letter[style*="--direction: bottom"] {
-  --clip-start: inset(0 0 100% 0);
-  --clip-end: inset(0 0 0 0);
+    --clip-start: inset(0 0 100% 0);
+    --clip-end: inset(0 0 0 0);
 }
 
 .letter[style*="--direction: left"] {
-  --clip-start: inset(0 0 0 100%);
-  --clip-end: inset(0 0 0 0);
+    --clip-start: inset(0 0 0 100%);
+    --clip-end: inset(0 0 0 0);
 }
 
 .letter[style*="--direction: right"] {
-  --clip-start: inset(0 100% 0 0);
-  --clip-end: inset(0 0 0 0);
+    --clip-start: inset(0 100% 0 0);
+    --clip-end: inset(0 0 0 0);
 }
 
 /* Keyframes for the flashing effect */
 @keyframes flashThreeTimes {
-  0% {
-    background-color: rgb(0, 0, 0); /* Initial color */
-  }
-  20% {
-    background-color: rgb(255, 255, 255); /* Flash to color 1 */
-  }
-  40% {
-    background-color: black; /* Flash back */
-  }
-  60% {
-    background-color: rgb(255, 255, 255); /* Flash to color 2 */
-  }
-  80% {
-    background-color: black; /* Flash back */
-  }
-  100% {
-    background-color: rgb(255, 255, 255); /* Flash to color 2 */
-  }
+    0% {
+        background-color: rgb(0, 0, 0); /* Initial color */
+    }
+    20% {
+        background-color: rgb(255, 255, 255); /* Flash to color 1 */
+    }
+    40% {
+        background-color: black; /* Flash back */
+    }
+    60% {
+        background-color: rgb(255, 255, 255); /* Flash to color 2 */
+    }
+    80% {
+        background-color: black; /* Flash back */
+    }
+    100% {
+        background-color: rgb(255, 255, 255); /* Flash to color 2 */
+    }
 }
 
  /* For tablets (width up to 768px) */
 @media (max-width: 768px) {
-  body {
-    background-color: black;
-    color: white;
-    margin: 0;
-    background-image: url('../images/hackedit.jpg');
-    background-size: 300%;  /* Keep zoom level */
-    background-position: 25% 75%;  /* Changed from 75% center to 75% 25% */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: 'Source Code Pro', monospace;
-    overflow: hidden;
-    padding: 0;
-}
+    body {
+        background-color: black;
+        color: white;
+        margin: 0;
+        background-image: url('../images/hackedit.jpg');
+        background-size: 300%;  /* Keep zoom level */
+        background-position: 25% 75%;  /* Changed from 75% center to 75% 25% */
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'Source Code Pro', monospace;
+        overflow: hidden;
+        padding: 0;
+    }
 
-h1 {
-    font-size: clamp(3rem, 10vw, 4rem);
-    width: 100vw;
-    display: block;  /* Changed from inline-block */
-    text-align: center;
-    margin-bottom: 2.0rem;
-    background-color: black;
-    letter-spacing: clamp(1.0rem, 0.5vw, 0.25rem);
-    text-indent: 0.0rem;
-    margin-left: -0;  /* Remove any margin */
-    margin-right: -0;
-    padding: 1rem 0;  /* Add vertical padding */
-}
+    h1 {
+        font-size: clamp(3rem, 10vw, 4rem);
+        width: 100vw;
+        display: block;  /* Changed from inline-block */
+        text-align: center;
+        margin-bottom: 2.0rem;
+        background-color: black;
+        letter-spacing: clamp(1.0rem, 0.5vw, 0.25rem);
+        text-indent: 0.0rem;
+        margin-left: -0;  /* Remove any margin */
+        margin-right: -0;
+        padding: 1rem 0;  /* Add vertical padding */
+    }
 
-h2 {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    width: 100vw;
-    display: block;  /* Changed from inline-block */
-    text-align: left;
-    margin-bottom: 1.0rem;
-    background-color: rgb(0, 0, 0);
-    letter-spacing: clamp(0.5rem, 0.5vw, 0.25rem);
-    text-indent: 1rem;  /* Add some indent for text */
-    margin-left: -0;  /* Remove any margin */
-    margin-right: -0;
-    padding: 0.5rem 0;  /* Add vertical padding */
-}
+    h2 {
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        width: 100vw;
+        display: block;  /* Changed from inline-block */
+        text-align: left;
+        margin-bottom: 1.0rem;
+        background-color: rgb(0, 0, 0);
+        letter-spacing: clamp(0.5rem, 0.5vw, 0.25rem);
+        text-indent: 1rem;  /* Add some indent for text */
+        margin-left: -0;  /* Remove any margin */
+        margin-right: -0;
+        padding: 0.5rem 0;  /* Add vertical padding */
+    }
 
-h3 {
-    font-size: clamp(1.0rem, 2.0vw, 2rem);
-    letter-spacing: clamp(0.5rem, 0.5vw, 0.25rem);
-    width: 100vw;
-    display: block;  /* Changed from inline-block */
-    text-align: left;
-    margin-bottom: 0.5rem;
-    background-color: rgb(0, 0, 0);
-    text-indent: 1rem;  /* Add some indent for text */
-    margin-left: -0;  /* Remove any margin */
-    margin-right: -0;
-    padding: 0.5rem 0;  /* Add vertical padding */
-}
+    h3 {
+        font-size: clamp(1.0rem, 2.0vw, 2rem);
+        letter-spacing: clamp(0.5rem, 0.5vw, 0.25rem);
+        width: 100vw;
+        display: block;  /* Changed from inline-block */
+        text-align: left;
+        margin-bottom: 0.5rem;
+        background-color: rgb(0, 0, 0);
+        text-indent: 1rem;  /* Add some indent for text */
+        margin-left: -0;  /* Remove any margin */
+        margin-right: -0;
+        padding: 0.5rem 0;  /* Add vertical padding */
+    }
 
-/* Reset span letter spacing */
-h1 span, h2 span, h3 span {
-    text-indent: 0.0rem;
-}
+    /* Reset span letter spacing */
+    h1 span, h2 span, h3 span {
+        text-indent: 0.0rem;
+    }
 }
 
 /* For mobile devices (width up to 480px) */
