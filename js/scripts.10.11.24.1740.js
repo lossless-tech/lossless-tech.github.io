@@ -7,8 +7,8 @@ const links = {
     // artist_two_sound: "https://soundcloud.com/nathaniel_pavel",
     // artist_three_sound: "https://soundcloud.com/mikeext",
     location_link: "https://californiaclipper.com/",
-    calendar_link: "",
-    ra_link: "",
+    calendar_link: "https://ra.co/events/2078452",
+    ra_link: "https://ra.co/events/2078452",
     instagram_link: "https://www.instagram.com/"
 };
 
