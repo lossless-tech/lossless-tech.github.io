@@ -40,13 +40,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../images/hackedit.jpg');
-    background-size: cover;
+    background-image: url('../images/aba2.jpg');
     background-position: center;
     background-repeat: no-repeat;
+    background-size: 100%;
     z-index: -1;
-    opacity: 0;  /* Start completely black */
-    animation: backgroundFlicker 1.5s ease-in-out forwards;
+    opacity: 1;  /* Start completely black */
 }
 
 body {
