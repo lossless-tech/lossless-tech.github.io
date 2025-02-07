@@ -29,8 +29,8 @@
 }
 
 .content-wrapper {
-    opacity: 0;
-    animation: backgroundFlicker 1.5s ease-in-out forwards;
+    opacity: 1;
+    /* animation: backgroundFlicker 1.5s ease-in-out forwards;
     animation-delay: 1.0s;  /* Start after background flicker */
 }
 
