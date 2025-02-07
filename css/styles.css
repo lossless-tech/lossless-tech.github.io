@@ -523,7 +523,7 @@ h3:hover .vhs {
         color: white;
         margin: 0;
         background-image: url('../images/aba2.jpg');
-        background-size: 300%;  /* Keep zoom level */
+        background-size: 100%;  /* Keep zoom level */
         background-position: 25% 75%;  /* Changed from 75% center to 75% 25% */
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -587,7 +587,7 @@ h3:hover .vhs {
         color: white;
         margin: 0;
         background-image: url('../images/aba2.jpg');
-        background-size: 300%;  /* Keep zoom level */
+        background-size: 100%;  /* Keep zoom level */
         background-position: 25% 75%;  /* Changed from 75% center to 75% 25% */
         background-repeat: no-repeat;
         background-attachment: fixed;
