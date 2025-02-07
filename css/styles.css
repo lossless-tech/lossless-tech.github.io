@@ -507,6 +507,21 @@ h3:hover .vhs {
     }
 }
 
+@media (max-width: 1024px) {
+    body {
+        background-color: black;
+        color: white;
+        margin: 0;
+        background-image: url('../images/aba2.jpg');
+        background-size: 200%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'Source Code Pro', monospace;
+        overflow: hidden;
+        padding: 0;
+    }
+}
+
  /* For tablets (width up to 768px) */
 @media (max-width: 768px) {
     body {
@@ -514,7 +529,7 @@ h3:hover .vhs {
         color: white;
         margin: 0;
         background-image: url('../images/aba2.jpg');
-        background-size: 100%;  /* Keep zoom level */
+        background-size: 150%;  /* Keep zoom level */
         background-repeat: no-repeat;
         background-attachment: fixed;
         font-family: 'Source Code Pro', monospace;
@@ -585,6 +600,7 @@ h3:hover .vhs {
         font-family: 'Source Code Pro', monospace;
         overflow: hidden;
         padding: 0;
+        background-size: 200%;
     }
 
     h1 {
